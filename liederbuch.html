@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liederbuch</title>
+<style>
+  :root {
+    --paper: #f4ecd8;
+    --paper-dark: #eadfc2;
+    --ink: #3b2f24;
+    --ink-soft: #7a6652;
+    --accent: #8a3b2a;
+    --line: #c9b78f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+  .page {
+    max-width: 640px;
+    height: 100dvh;
+    margin: 0 auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .hidden { display: none !important; }
+
+  /* Menü */
+  header.title { text-align: center; margin-bottom: 18px; }
+  header.title h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .rule {
+    margin: 10px auto 0;
+    width: 60%;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    height: 4px;
+  }
+  .sub { color: var(--ink-soft); font-style: italic; font-size: 0.95rem; margin-top: 8px; }
+
+  #menu { overflow-y: auto; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+  .tile {
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    background: var(--paper-dark);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 14px 12px;
+    min-height: 92px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 1px 2px 0 rgba(0,0,0,0.08);
+  }
+  .tile:hover, .tile:focus-visible { border-color: var(--accent); outline: none; }
+  .tile .nr { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.1em; }
+  .tile .name { font-size: 1.05rem; margin-top: 6px; }
+
+  /* Lied */
+  #song { min-height: 0; flex: 1; display: flex; flex-direction: column; }
+  .back {
+    align-self: flex-start;
+    font: inherit;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--accent);
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-bottom: 14px;
+  }
+  .back:hover { background: var(--paper-dark); }
+  #song h2 {
+    margin: 0 0 6px;
+    text-align: center;
+    font-weight: normal;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+  .lyrics {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    margin-top: 12px;
+    padding: 16px 18px;
+    background: #f9f3e3;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-size: 1.1rem;
+    line-height: 1.65;
+  }
+  .empty { color: var(--ink-soft); font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <section id="menu">
+    <header class="title">
+      <h1>Liederbuch</h1>
+      <hr class="rule">
+      <div class="sub">Bitte ein Lied auswählen</div>
+    </header>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="song" class="hidden">
+    <button class="back" id="back">← Zurück zur Auswahl</button>
+    <h2 id="song-title"></h2>
+    <hr class="rule">
+    <div class="lyrics" id="lyrics" tabindex="0"></div>
+  </section>
+</div>
+
+
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║  LIEDTEXTE                                                       ║
+║                                                                  ║
+║  Pro Lied gibt es einen Block. Den Text einfach ZWISCHEN den     ║
+║  Zeilen  ▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼  und                      ║
+║  ▲▲▲ TEXT BIS HIER ▲▲▲  einfügen.                                ║
+║  Die Zeilen mit <script ...> und </script> nicht löschen.        ║
+║  Zeilenumbrüche und Leerzeilen bleiben so erhalten.              ║
+╚══════════════════════════════════════════════════════════════════╝
+-->
+
+<!-- ═══════════ 1. Hoch auf dem gelben Wagen ═══════════ -->
+<script type="text/plain" id="lyrics-1" data-title="Hoch auf dem gelben Wagen">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 2. Wahre Freundschaft ═══════════ -->
+<script type="text/plain" id="lyrics-2" data-title="Wahre Freundschaft">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 3. Heute hier, morgen dort ═══════════ -->
+<script type="text/plain" id="lyrics-3" data-title="Heute hier, morgen dort">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 4. Sah ein Knab ein Röslein stehn ═══════════ -->
+<script type="text/plain" id="lyrics-4" data-title="Sah ein Knab ein Röslein stehn">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 5. Wem Gott will rechte Gunst erweisen ═══════════ -->
+<script type="text/plain" id="lyrics-5" data-title="Wem Gott will rechte Gunst erweisen">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 6. Mein Vater war ein Wandersmann ═══════════ -->
+<script type="text/plain" id="lyrics-6" data-title="Mein Vater war ein Wandersmann">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 7. Nehmt Abschied, Brüder ═══════════ -->
+<script type="text/plain" id="lyrics-7" data-title="Nehmt Abschied, Brüder">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 8. Ade zur guten Nacht ═══════════ -->
+<script type="text/plain" id="lyrics-8" data-title="Ade zur guten Nacht">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 9. Muss i denn zum Städtele hinaus ═══════════ -->
+<script type="text/plain" id="lyrics-9" data-title="Muss i denn zum Städtele hinaus">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+<!-- ═══════════ 10. Lustig ist das Zigeunerleben ═══════════ -->
+<script type="text/plain" id="lyrics-10" data-title="Lustig ist das Zigeunerleben">
+▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼
+
+▲▲▲ TEXT BIS HIER ▲▲▲
+</script>
+
+
+<!-- ═══════════ AB HIER NICHTS MEHR ÄNDERN (Programmlogik) ═══════════ -->
+<script>
+const MARK_START = "▼▼▼ TEXT AB HIER EINFÜGEN ▼▼▼";
+const MARK_END = "▲▲▲ TEXT BIS HIER ▲▲▲";
+
+const songs = [...document.querySelectorAll('script[id^="lyrics-"]')].map(el => {
+  let text = el.textContent.replace(MARK_START, "").replace(MARK_END, "").trim();
+  return { title: el.dataset.title, lyrics: text };
+});
+
+const menu = document.getElementById("menu");
+const song = document.getElementById("song");
+const grid = document.getElementById("grid");
+const titleEl = document.getElementById("song-title");
+const lyricsEl = document.getElementById("lyrics");
+
+songs.forEach((s, i) => {
+  const b = document.createElement("button");
+  b.className = "tile";
+  b.innerHTML = `<span class="nr">${i + 1}</span><span class="name"></span>`;
+  b.querySelector(".name").textContent = s.title;
+  b.addEventListener("click", () => { location.hash = "#" + (i + 1); });
+  grid.appendChild(b);
+});
+
+function render() {
+  const n = parseInt(location.hash.slice(1), 10);
+  const s = songs[n - 1];
+  if (s) {
+    titleEl.textContent = s.title;
+    if (s.lyrics) {
+      lyricsEl.classList.remove("empty");
+      lyricsEl.textContent = s.lyrics;
+    } else {
+      lyricsEl.classList.add("empty");
+      lyricsEl.textContent = "Text noch nicht eingefügt.";
+    }
+    lyricsEl.scrollTop = 0;
+    menu.classList.add("hidden");
+    song.classList.remove("hidden");
+  } else {
+    song.classList.add("hidden");
+    menu.classList.remove("hidden");
+  }
+}
+
+document.getElementById("back").addEventListener("click", () => { location.hash = ""; });
+window.addEventListener("hashchange", render);
+render();
+</script>
+</body>
+</html>
